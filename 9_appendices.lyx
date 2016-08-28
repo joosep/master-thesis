@@ -1,0 +1,1069 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage[a4paper]{geometry}
+
+% General packages for math in general, theorems and symbols 
+% Read ftp://ftp.ams.org/ams/doc/amsmath/short-math-guide.pdf for further information
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{amssymb}
+% A way to define theorems and lemmata
+
+% Optional calligraphic fonts    
+% \usepackage[mathscr]{eucal}
+
+% Packages for building tables and tabulars 
+\usepackage{array}
+\usepackage{tabu}   % Wide lines in tables
+\usepackage{xspace} % Non-eatable spaces in macros
+
+% Including graphical images and setting the figure directory
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% Packages for getting clickable links in PDF file
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+% 
+
+% Packages for defining colourful text together with some colours
+\usepackage{color}
+\usepackage{xcolor} 
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+% Standard package for drawing algorithms
+% Since the thesis in article format we must define \chapter for
+% the package algorithm2e (otherwise obscure errors occur) 
+\let\chapter\section
+%\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+
+% Fix a  set of keywords which you use inside algorithms
+%\SetKw{True}{true}
+%\SetKw{False}{false}
+%\SetKwData{typeInt}{Int}
+%\SetKwData{typeRat}{Rat}
+%\SetKwData{Defined}{Defined}
+%\SetKwFunction{parseStatement}{parseStatement}
+
+
+% Nice todo notes
+\usepackage{todonotes}
+
+% Define your favorite macros that you use inside the thesis 
+% Name followed by non-removable space
+\newcommand{\proveit}{ProveIt\xspace}
+
+% Macros that make sure that the math mode is set
+\newcommand{\typeF}[1] {\ensuremath{\mathsf{type_{#1}}}\xspace}
+\newcommand{\opDiv}{\ensuremath{\backslash \mathsf{div}}\xspace} 
+
+% Nice Todo box
+\newcommand{\TODO}{\todo[inline]}
+
+% A way to define theorems and lemmata
+\newtheorem{theorem}{Theorem}
+
+\DeclareMathOperator{\Prob}{P}
+
+\newcommand\invisiblesection[1]{%
+  \refstepcounter{section}%
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \sectionmark{#1}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{figure}{0} 
+\backslash
+renewcommand{
+\backslash
+thefigure}{A.
+\backslash
+arabic{figure}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{equation}{0} 
+\backslash
+renewcommand{
+\backslash
+theequation}{A.
+\backslash
+arabic{equation}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+CDR and GPS fix locations with assessments in Estonia and close up in Tartu
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:CDR-and-GPS-assessments"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/ranWithGpsAssessmentsEesti2.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pictures/ranWithGpsAssessmentsLegend.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Users' GPS fix locations with assessments in Estonia.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:assessmentPointEstonia"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/ranWithGpsAssessmentTartu2.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pictures/ranWithGpsAssessmentsLegend.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Users' GPS fix locations with assessments in Tartu.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:AssessmentPointTartu"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Cell Plan Calculator configuration file
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Cell-Plan-Calculator-configuration"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\small},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	"rules_location" : "rules.csv",
+\end_layout
+
+\begin_layout Plain Layout
+
+	"cluster_distance" : 70,
+\end_layout
+
+\begin_layout Plain Layout
+
+	"stretch_a_direction": 1,
+\end_layout
+
+\begin_layout Plain Layout
+
+	"stretch_ap_direction": 1,
+\end_layout
+
+\begin_layout Plain Layout
+
+	"csv_output_path": "cellplan_with_border.csv",
+\end_layout
+
+\begin_layout Plain Layout
+
+	"type1_cellfiles" : [
+\end_layout
+
+\begin_layout Plain Layout
+
+		{
+\end_layout
+
+\begin_layout Plain Layout
+
+			"location" : "celldata_hspa.csv",
+\end_layout
+
+\begin_layout Plain Layout
+
+			"format" : "csv",
+\end_layout
+
+\begin_layout Plain Layout
+
+			"separator" : "
+\backslash
+|",
+\end_layout
+
+\begin_layout Plain Layout
+
+			"cgi_field" : "CGI",
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "technology_generation_value" : "3G",
+\end_layout
+
+\begin_layout Plain Layout
+
+			"frequency_fields" : "BAND",
+\end_layout
+
+\begin_layout Plain Layout
+
+			"import_fields" : {
+\end_layout
+
+\begin_layout Plain Layout
+
+				"lat" : "LATITUDE",
+\end_layout
+
+\begin_layout Plain Layout
+
+				"lon" : "LONGITUDE",
+\end_layout
+
+\begin_layout Plain Layout
+
+				"direction" : "AZIMUTH",
+\end_layout
+
+\begin_layout Plain Layout
+
+				"radius" :"RADIUS",
+\end_layout
+
+\begin_layout Plain Layout
+
+				"frequency": "BAND"
+\end_layout
+
+\begin_layout Plain Layout
+
+			},
+\end_layout
+
+\begin_layout Plain Layout
+
+			"removed_input_fields" : [],
+\end_layout
+
+\begin_layout Plain Layout
+
+			"coordinate_system" : "DegDec"
+\end_layout
+
+\begin_layout Plain Layout
+
+		},
+\end_layout
+
+\begin_layout Plain Layout
+
+                {
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "location" : "celldata_lte.csv",
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "format" : "csv",
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "separator" : "
+\backslash
+|",
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "cgi_field" : "CGI",
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "frequency_fields" : "BAND",
+\end_layout
+
+\begin_layout Plain Layout
+
+			"technology_generation_value" : "4G",
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "import_fields" : {
+\end_layout
+
+\begin_layout Plain Layout
+
+                                "lat" : "LATITUDE",
+\end_layout
+
+\begin_layout Plain Layout
+
+                                "lon" : "LONGITUDE",
+\end_layout
+
+\begin_layout Plain Layout
+
+				"radius" : "RADIUS",
+\end_layout
+
+\begin_layout Plain Layout
+
+				"direction" : "AZIMUTH",
+\end_layout
+
+\begin_layout Plain Layout
+
+				"frequency" : "BAND"
+\end_layout
+
+\begin_layout Plain Layout
+
+                        },
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "removed_input_fields" : [],
+\end_layout
+
+\begin_layout Plain Layout
+
+                        "coordinate_system" : "DegDec"
+\end_layout
+
+\begin_layout Plain Layout
+
+                }
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	"removed_output_fields" : ["mcc","mnc","lac","cellId"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	"output_order" : [
+\end_layout
+
+\begin_layout Plain Layout
+
+		"cgi","lat","lon","cluster_id"]
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mathematical model of Spatial Probability Density Function
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Mathematical-model-of-SPDF"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Text of this section is written for the unpublished article 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spdf2014Vajakas"
+
+\end_inset
+
+ by Jaan Vajakas.
+\end_layout
+
+\begin_layout Standard
+Random variables are given by underlining (following the van Dantzig convention).
+ Dot is a placeholder for an argument of a function.
+\end_layout
+
+\begin_layout Standard
+For each cell 
+\begin_inset Formula $C$
+\end_inset
+
+ in a cell plan 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ and each pixel 
+\begin_inset Formula $x$
+\end_inset
+
+, we want to compute 
+\begin_inset Formula $\Prob(x|C)=\Prob(\underline{x}=x\,|\,\underline{C}=C)$
+\end_inset
+
+, probability that the EM is at location 
+\begin_inset Formula $x$
+\end_inset
+
+ if it generates an event in cell 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the following, it is described how to do it.
+ The raster 
+\begin_inset Formula $\Prob(\underline{x}=\cdot\,|\,\underline{C}=C)$
+\end_inset
+
+ is then the SPDF of the cell 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The probability 
+\begin_inset Formula $\Prob(x|C)$
+\end_inset
+
+ is determined by the Bayes' formula:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Prob(x|C)=\tfrac{\Prob(C|x)}{\Prob(x)},\label{eq:bayes_formula}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Prob(x|C)=\Prob(\underline{C}=C\,|\,\underline{x}=x)$
+\end_inset
+
+ is the probability that if an EM is at location 
+\begin_inset Formula $x$
+\end_inset
+
+ then it is connected to cell 
+\begin_inset Formula $C$
+\end_inset
+
+ (rather than any other cell or no cell);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Prob(x)=\Prob(\underline{x}=x)$
+\end_inset
+
+ is the Bayesian prior density, i.e.
+ the probability for an ME to be in a pixel 
+\begin_inset Formula $x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Prob(C)=\Prob(\underline{C}=C)$
+\end_inset
+
+ is the probability for ME (at a random location) to be connected to the
+ cell 
+\begin_inset Formula $C$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\Prob(C)=\sum_{i}\Prob(C|x)\Prob(x)$
+\end_inset
+
+ where 
+\begin_inset Formula $x$
+\end_inset
+
+ ranges theoretically over the world (in practice, over an area of interests,
+ e.g.
+ one country).
+\end_layout
+
+\begin_layout Standard
+The Bayesian prior 
+\begin_inset Formula $\Prob(x)$
+\end_inset
+
+, representing our prior belief, can be constructed from population density
+ data, from road or buildings layers, as people are more likely to be on
+ a road or in a building.
+\end_layout
+
+\begin_layout Standard
+The probability 
+\begin_inset Formula $\Prob(C|x)$
+\end_inset
+
+ is computed as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Prob(C|x)=\Prob(connected|x)\cdot\Prob(C|x,connected),\label{eq:cell_given_location}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Prob(connected|x)$
+\end_inset
+
+ is the probability that ME is connected to the mobile network (i.e.
+ ME is able to generate an event), when it is at location 
+\begin_inset Formula $x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Prob(C|x,connected)$
+\end_inset
+
+ is the probability that ME is at the location 
+\begin_inset Formula $x$
+\end_inset
+
+ and is connected to the cell 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\underline{S}$
+\end_inset
+
+ denote the active set of cells that can be connected by the ME, i.e.
+ the set of cells actually detectable by the ME at a given time moment.
+ A rough estimate of the conditional probability 
+\begin_inset Formula $\Prob(C\in\underline{S}|x)$
+\end_inset
+
+ (that a certain cell 
+\begin_inset Formula $C$
+\end_inset
+
+ is detectable by the ME if the ME is at the point 
+\begin_inset Formula $x$
+\end_inset
+
+) is provided by the MNO in the form of cell polygon: 
+\begin_inset Formula $\Prob(C\in\underline{S}|x)$
+\end_inset
+
+ is 
+\begin_inset Formula $1$
+\end_inset
+
+ if location 
+\begin_inset Formula $x$
+\end_inset
+
+ lies inside the cell's polygon and 
+\begin_inset Formula $0$
+\end_inset
+
+ if outside, so the active set depends deterministically on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ In a more refined model, 
+\begin_inset Formula $\Prob(C\in\underline{S}|x)$
+\end_inset
+
+ could have non-zero values to reflect our ignorance of the precise coverage
+ area and the stochastic nature of cell coverage caused by effects like
+ Rayleigh fading and weather changes.
+\end_layout
+
+\begin_layout Standard
+CDR events can only be received when the ME is connected to the network.
+ Estonia is very well covered and connection probability is almost 100%.
+ Actual connection rate is unknown.
+ Therefore, simplify is made and calculate for each raster pixel 
+\begin_inset Formula $\Prob'(C|x)\approx\Prob(C,connected|x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the probability 
+\begin_inset Formula $\Prob(C|x,connected)$
+\end_inset
+
+ an ad-hoc formula is proposed (in contrast to the other formulas, that
+ have some theoretical justification): namely, the probability is taken
+ to be proportional to the square of the probability 
+\begin_inset Formula $\Prob(C\in\underline{S}|x)$
+\end_inset
+
+, i.e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Prob(C|x,connected)=\tfrac{\Prob(C\in\underline{S}|x)^{2}}{\sum_{c\in\mathcal{C}}\Prob(C\in\underline{S}|x)^{2}}.\label{eq:ad_hoc_cell_given_location}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ad_hoc_cell_given_location"
+
+\end_inset
+
+ expresses the consideration that radio network tries to avoid using the
+ cell with lower SINR, i.e.
+ uses 
+\begin_inset Quotes eld
+\end_inset
+
+the winner takes (almost) all calls
+\begin_inset Quotes erd
+\end_inset
+
+ line of thinking.
+\end_layout
+
+\begin_layout Standard
+The SPDF estimate quality is evaluated with logarithm of likelihood 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{i}\log\Prob'(C_{i}|x_{i}),
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $i$
+\end_inset
+
+ is an index of measurement (one measurement is one CDR with established
+ GPS location).
+ 
+\end_layout
+
+\begin_layout Subsection
+Algorithm for computing the Bayesian PDF of cells and the heat map aggregate
+ statistics using the cells
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Algorithm-Bayesian_PDF"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For practical use, the computations are separated into two steps: at first,
+ the PDF is calculated for each cell and after that, the calculated PDFs
+ can be used for various statistical calculations.
+\end_layout
+
+\begin_layout Standard
+This particular implementation was optimized towards heat map calculations,
+ where each cell is given a weight (e.
+ g.
+ the number of people connected to given cell) and raster image is generated,
+ showing spatial density distribution.
+\end_layout
+
+\begin_layout Standard
+For computations, we represented the probability field of each cell as a
+ raster image in the RAM (random access memory).
+ We used the Web Mercator projection.
+ We had a fixed resolution called 
+\emph on
+full resolution
+\emph default
+, which is the resolution we were referring to in the formulas above (when
+ talking about the heatmap pixel 
+\begin_inset Formula $x$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In order to save space, Raster data of the cell PDF was stored in computer
+ memory in lower resolution.
+ By 
+\emph on
+resolution
+\emph default
+, we mean pixels per coordinate unit.
+ More precisely, our variable-resolution raster was a grid of tiles, each
+ tile a square matrix of floating-point numbers (pixels) with sidelength
+ a power of two pixels.
+ The admissible resolutions for storing the tiles were the full resolution
+ and the resolutions a power of two times lower than the full resolution.
+\end_layout
+
+\begin_layout Standard
+The rendering was done at a resolution inversely proportional to the square
+ root of the area of the polygon (rounded to the nearest higher admissible
+ resolution, or full resolution if no higher resolution available).
+ This reduction of resolution is justified by the fact the cell shapes have
+ relatively large spatial uncertainty which is proportional to cell size
+ --- larger cells have a larger uncertainty of the boundary of the cell's
+ actual service area.
+\end_layout
+
+\begin_layout Standard
+For each cell 
+\begin_inset Formula $C$
+\end_inset
+
+, we obtained the raster 
+\begin_inset Formula $\Prob(C\in\underline{S}|x)$
+\end_inset
+
+, the probability that cell 
+\begin_inset Formula $C$
+\end_inset
+
+ was detectable at a given location, by rendering the cell's polygon from
+ the cell plan (
+\begin_inset Formula $1$
+\end_inset
+
+ if the pixel is inside the polygon, 
+\begin_inset Formula $0$
+\end_inset
+
+ if outside, antialiasing on the edges).
+ Optionally we applied a buffer and smoothing effect (blur) to raster obtained
+ from cell plan.
+ These rasters were used in next step for Bayesian PDF calculations.
+\end_layout
+
+\begin_layout Standard
+Using the formulas above, we combined the rasters of the probability fields
+ 
+\begin_inset Formula $\Prob(C\in S|x)$
+\end_inset
+
+ (uniform-resolution, but different cells possibly at different resolutions)
+ to produce the variable-resolution rasters 
+\begin_inset Formula $\Prob(C|x)$
+\end_inset
+
+ and finally 
+\begin_inset Formula $\Prob(x|C)$
+\end_inset
+
+.
+ During the computations, we did not reduce the resolution anywhere.
+ The resulting rasters were stored in memory for use in statistical calculations.
+\end_layout
+
+\begin_layout Standard
+We implemented heatmap calculation functionality based on Bayesian PDF.
+ For heatmap calculation one uses the PDF in an appropriate resolution.
+ If PDF is stored in lower resolution and higher resolution does not exist
+ then available raster is upscaled accordingly.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+invisiblesection{BEC2016 paper}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:BEC2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename extras/BEC2016_tv_jr.pdf
+	lyxscale 50
+	extra LaTeX "pages=-"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

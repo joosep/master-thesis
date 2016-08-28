@@ -1,0 +1,3074 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage[a4paper]{geometry}
+
+% General packages for math in general, theorems and symbols 
+% Read ftp://ftp.ams.org/ams/doc/amsmath/short-math-guide.pdf for further information
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{amssymb}
+% A way to define theorems and lemmata
+
+% Optional calligraphic fonts    
+% \usepackage[mathscr]{eucal}
+
+% Packages for building tables and tabulars 
+\usepackage{array}
+\usepackage{tabu}   % Wide lines in tables
+\usepackage{xspace} % Non-eatable spaces in macros
+
+% Including graphical images and setting the figure directory
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% Packages for getting clickable links in PDF file
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+% 
+
+% Packages for defining colourful text together with some colours
+\usepackage{color}
+\usepackage{xcolor} 
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+% Standard package for drawing algorithms
+% Since the thesis in article format we must define \chapter for
+% the package algorithm2e (otherwise obscure errors occur) 
+\let\chapter\section
+%\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+
+% Fix a  set of keywords which you use inside algorithms
+%\SetKw{True}{true}
+%\SetKw{False}{false}
+%\SetKwData{typeInt}{Int}
+%\SetKwData{typeRat}{Rat}
+%\SetKwData{Defined}{Defined}
+%\SetKwFunction{parseStatement}{parseStatement}
+
+
+% Nice todo notes
+\usepackage{todonotes}
+
+% Define your favorite macros that you use inside the thesis 
+% Name followed by non-removable space
+\newcommand{\proveit}{ProveIt\xspace}
+
+% Macros that make sure that the math mode is set
+\newcommand{\typeF}[1] {\ensuremath{\mathsf{type_{#1}}}\xspace}
+\newcommand{\opDiv}{\ensuremath{\backslash \mathsf{div}}\xspace} 
+
+% Nice Todo box
+\newcommand{\TODO}{\todo[inline]}
+
+% A way to define theorems and lemmata
+\newtheorem{theorem}{Theorem}
+
+\DeclareMathOperator{\Prob}{P}
+\end_preamble
+\use_default_options true
+\master 0_thesis.lyx
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Methods
+\end_layout
+
+\begin_layout Subsection
+Description of the data
+\end_layout
+
+\begin_layout Subsubsection
+User data
+\end_layout
+
+\begin_layout Standard
+There were five test users with the identifications 1,2,3,5 and 6.
+ Data collection time period was almost 8 months: 01.04.2015 - 18.11.2015.
+ User 4 only collected the YouSense data for the first month, and because
+ of that this users data was discarded.
+\end_layout
+
+\begin_layout Paragraph
+YouSense data.
+\end_layout
+
+\begin_layout Standard
+GPS and connected cell information were collected from our test users with
+ android application YouSense, an active positioning application created
+ by the company O
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"{U}
+\end_layout
+
+\end_inset
+
+ Positium LBS.
+ 
+\end_layout
+
+\begin_layout Standard
+Example collected data is seen in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:YouSense-GPS-data"
+
+\end_inset
+
+.
+ The timestamp is in Unix epoch milliseconds.
+ the application collected GPS locations every 1 second if ME was moving
+ faster than 3 m/s and every 16 seconds if it was moving slower than that.
+ The application turns GPS tracking off when ME moves less than 20 meters
+ in 4 minutes or GPS fix could not be obtained for 60 seconds.
+ When ME starts moving again, GPS tracking will be turn on.
+ There may be caps in the collecting when the ME do not have its GPS turned
+ on.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:YouSense-event-counts"
+
+\end_inset
+
+ shows how many GPS events each user collected in the whole period and how
+ many events each month.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="9">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+userid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+cgi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+lon
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+lat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+timestamp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+accuracy
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+altitude
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+bearing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+speed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248-xx-xx-xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+26.68574
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+58.37747
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+1428003372860
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+136.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+92.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+NaN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+0.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248-xx-xx-xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+26.6848
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+58.37752
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+1428003424837
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+114.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+43.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+NaN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+0.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248-xx-xx-xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+26.68529
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+58.3776
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+1428045720961
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+147.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+77.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+NaN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+NaN
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248-xx-xx-xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+26.68582
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+58.3772
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+1428045942031
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+67.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+28.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+124.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+0.75
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+YouSense GPS data example.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:YouSense-GPS-data"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/YouSense_event_count_per_user.png
+	lyxscale 50
+	height 3.7cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pictures/YouSense_event_count_per_months.png
+	lyxscale 50
+	height 3.7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Users' YouSense event counts per user and per user per month.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:YouSense-event-counts"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+CDR data.
+\end_layout
+
+\begin_layout Standard
+With our test users permission, we also collected their CDR data from MNO
+ for the same period as GPS data.
+ CGI values are used for positioning from CDR data because MNOs do not always
+ have better CDR data for passive mobile positioning than just a CGI value.
+ The example of the data is seen in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:CDR data example"
+
+\end_inset
+
+.
+ the timestamp is in Unix epoch seconds.
+ CDR contains events with different types, this is given in the event column.
+ They could be call, SMS, location update, etc.
+ This thesis does not take event type into account for positioning.
+ 
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CDRnse-event-counts"
+
+\end_inset
+
+ shows how many CDR events each user made in the whole period and how many
+ events each month.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+userid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+timestamp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+MCC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+MNC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+LAC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+CI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Event type
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1427856959
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+85
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1427900159
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+85
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1427980327
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1427980332
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+248
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+xxxxxx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+85
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CDR data example.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:CDR data example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/CDR_event_count_per_user.png
+	lyxscale 50
+	height 3.7cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pictures/CDR_event_count_per_month.png
+	lyxscale 50
+	height 3.7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Users' CDR event counts per user and per user per month.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CDRnse-event-counts"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Combining CDR events with GPS data.
+\end_layout
+
+\begin_layout Standard
+A program was created to merge CDR and GPS events.
+ It reads in CDR events and uses GPS data to find the ME's real geographical
+ location.
+ For each CDR event, GPS event fix will be created based on the GPS events
+ before and after the CDR event time.
+ GPS location selection process is described with Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:CDR-and-GPS-merging-algorithm"
+
+\end_inset
+
+.
+ Each selected GPS event fix has an assessment for how precise that GPS
+ could be.
+ Overview of the result is given in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CDR-GPS-assessments_overview"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/CDR_GSP_assessments.png
+	lyxscale 50
+	height 3.7cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pictures/CDR_GPS_assessments_per_user.png
+	lyxscale 50
+	height 3.7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CDR GPS counts overview per assessments and per user per assessments.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CDR-GPS-assessments_overview"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+GPS fixes points locations are showed in the Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:CDR-and-GPS-assessments"
+
+\end_inset
+
+.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:assessmentPointEstonia"
+
+\end_inset
+
+ shows location points over Estonia and Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:AssessmentPointTartu"
+
+\end_inset
+
+ shows close up in Tartu, where the majority of events were made.
+ There are big lines from yellow dots with assessment 
+\begin_inset Quotes eld
+\end_inset
+
+Too far in time
+\begin_inset Quotes erd
+\end_inset
+
+ that show how unrealistic these measurements are.
+ CDR events with GPS fixes with assessment 
+\begin_inset Quotes eld
+\end_inset
+
+Too far in time
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Too far in location
+\begin_inset Quotes erd
+\end_inset
+
+ were discarded.
+ That means from all the events there are 37370 useful CDR events with GPS
+ fixes.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+For each user:
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Remove CDR events that are outside of the GPS events time frame, because
+ extrapolation is not supported.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+For each remaining CDR event :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Use binary search over time-sorted GPS events to find the GPS event with
+ the smallest time that is larger or equal to the CDR event time.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Found GPS event will be known as the next fix.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+The GPS fix before the next fix is known as the previous fix.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+If the next fix is the first recorded GPS event, then it will be used as
+ the previous fix and the next GPS event after that will be the next fix.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Calculate interpolated GPS fix.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The interpolated GPS fix values are a weighted average of the previous and
+ the next fix with the time of the CDR event.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Each GPS fix weight is time difference from the GPS fix time to the CDR
+ event time.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Select assessment for the interpolated GPS fix.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+If the previous and the next fix are farther than 15 minutes from the CDR
+ event time, then assessment is 
+\begin_inset Quotes eld
+\end_inset
+
+Too far in time
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+If the previous and the next fix are both closer than 10 seconds from the
+ CDR event, then:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+if both fixes are farther from each other than 100m then 
+\begin_inset Quotes eld
+\end_inset
+
+Too far in location
+\begin_inset Quotes erd
+\end_inset
+
+ is chosen.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+if both fixes are closer than 100m, then 
+\begin_inset Quotes eld
+\end_inset
+
+interpolated fix
+\begin_inset Quotes erd
+\end_inset
+
+ is chosen.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+if the previous and the next fix are closer than 15 minutes from the CDR
+ event, then:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+if the previous fix is closer than the next fix, then 
+\begin_inset Quotes eld
+\end_inset
+
+previous fix
+\begin_inset Quotes erd
+\end_inset
+
+ is chosen.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+if the next fix is closer than the previous fix, then 
+\begin_inset Quotes eld
+\end_inset
+
+next fix
+\begin_inset Quotes erd
+\end_inset
+
+ is chosen.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Select GPS fix based on the assessment.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+With assessments 
+\begin_inset Quotes eld
+\end_inset
+
+interpolated fix
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Too far in location
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Too far in time
+\begin_inset Quotes erd
+\end_inset
+
+, interpolated GPS fix is chosen.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+With assessments 
+\begin_inset Quotes eld
+\end_inset
+
+previous fix
+\begin_inset Quotes erd
+\end_inset
+
+, previous GPS fix is chosen.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+With assessments 
+\begin_inset Quotes eld
+\end_inset
+
+next fix
+\begin_inset Quotes erd
+\end_inset
+
+, next GPS fix is chosen.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CDR and GPS events merging algorithm.
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:CDR-and-GPS-merging-algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cell plan creation techniques
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Cell-plan-creation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cell plan can be generated using multiple different approaches.
+ 
+\end_layout
+
+\begin_layout Standard
+What method to use depends on the cell plan's purpose.
+ If it would be used for analyzing network coverages, then cell plan that
+ includes cell's fringe areas could be better.
+ If it would be used for showing the area where the ME more likely was when
+ it was connected to that cell, then smaller cell size would give a better
+ location estimation accuracy.
+ This thesis uses cell plans for positioning ME locations.
+\end_layout
+
+\begin_layout Standard
+Cell plan generation methods in this thesis and the implementation of them
+ are created for application Demograft.
+ Demograft is a tool for MNOs that uses passive location data of their customer
+ base to help them analyze their network.
+ It also helps them selecting subscribers for advertising campaigns.
+ Demograft was developed by Reach-U 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Reach-U"
+
+\end_inset
+
+ and STACC 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Stacc"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When the final intention of a cell plan is known, then generation depends
+ on the available cell data.
+ Simplest data would be cells identifications and their geographical locations.
+ This will give the most inaccurate cell plan because as there is not any
+ information about the direction of the cells.
+ So all the cells could be generated as omnidirectional and the cells on
+ the same site would have the exact same cell geometry.
+ If data includes direction of the antenna, then directional cells could
+ be generated and cells on the same site could each have the cell geometry
+ in the correct direction.
+ If frequency or technology is included, then each different frequency and
+ technology could have cell plans on separate layers.
+ More cell attributes help to generate more precise cell shapes.
+ This information is usually given in a Comma Separated Value (CSV
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CSV"
+description "Comma Separated Value"
+
+\end_inset
+
+) or an Extensible Markup Language (XML
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "XML"
+description "Extensible Markup Language"
+
+\end_inset
+
+) file.
+\end_layout
+
+\begin_layout Standard
+When MNOs have the BSD files or RSSI data and they are prepared to share
+ them, then this data could be used for generating more real-world-like
+ cell plans.
+ To generate cell plans from different inputs Cell Plan Calculator was created
+ for Demograft application.
+ This chapter describes the methods used by Cell Plan Calculator to create
+ cell plans from different input data.
+\end_layout
+
+\begin_layout Subsubsection
+CSV file input
+\end_layout
+
+\begin_layout Standard
+The basic information for each cell is usually given by the MNOs with simple
+ CSV or XML file.
+ Most CSV or XML files contain cells geographical points(cell site coordinates)
+ with descriptive metadata.
+ As cell plans are made of geographical coverage areas, then we have to
+ generate areas from given cell location point and its metadata.
+ Minimum requirement information for each cell are location coordinates
+ and a cell's CGI, but to get realistic cell shapes, then direction and
+ frequency is also needed.
+ Basic cell table is shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:MinimumCellPlanCsv"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Longitude and latitude coordinates for the cell are needed for the site
+ location, without it, there is not possible to know where the cell should
+ be located on the map.
+\end_layout
+
+\begin_layout Standard
+Direction shows in where the cell is pointed.
+ Missing direction value should show that given cell is omnidirectional
+ cell and does not have direction (in the Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:MinimumCellPlanCsv"
+
+\end_inset
+
+ shown as 
+\begin_inset Quotes eld
+\end_inset
+
+null
+\begin_inset Quotes erd
+\end_inset
+
+) .
+ If the direction is missing for whole data, then we can only assume that
+ every cell in the given data is an omnidirectional cell.
+ 
+\end_layout
+
+\begin_layout Standard
+The frequency for each cell is important because cells in different frequency
+ band should be separated from each other.
+ If frequency info is missing, then we have to assume that every cell is
+ in the same frequency.
+ Sometimes instead of frequency column, each frequency is given in a separate
+ file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CGI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+latitude
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+longitude
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+direction
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+frequency
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+248-00-01-121
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+59.568150
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.301561
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LTE1800
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+248-00-01-122
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+59.568150
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.301561
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+120
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LTE1800
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+248-00-01-123
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+59.568150
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.301561
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+240
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LTE1800
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+248-00-01-131
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+59.175251
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.850207
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+null
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UMTS2100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Cells basic CSV example.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:MinimumCellPlanCsv"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These requirements are minimal but may not be sufficient for a more precise
+ cell plan.
+ There may be more information given to each cell.
+ If a cell radius is also given, it can be used for not letting the cell
+ spread top far.
+ With a cell type, we can tell how big cell area should be and even could
+ help for deciding if a cell is omnidirectional or not.
+ Normally, the direction field should be enough for knowing if a cell is
+ directional or not, but the practice has shown that MNOs cell data is not
+ always perfect and having more information about cell's attributes, helps
+ to make better decisions for creating cell area for each cell.
+\end_layout
+
+\begin_layout Standard
+Using the basic information, there are three ways to generate cell plan.
+ Each method will create cell plans with different geometry shape.
+\end_layout
+
+\begin_layout Paragraph
+Voronoi cell plan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/voronoi_irregular_shape.png
+	lyxscale 40
+	width 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Voronoi cell plan with gray arrows as cell's direction and brown dots as
+ cell sites.
+ A questionable shape of the cell 3836 is depicted.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Voronoi-irregular-shape"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Voronoi method is used for generating cell plan that does not have overlaps
+ between cells in the same frequency.
+ This creates good areas for mobile positioning but does not take into account
+ that in reality cells will overlap.
+ This can be fixed by enlarging each cell after generating Voronoi cells.
+ 
+\end_layout
+
+\begin_layout Standard
+This method is a fast way to divide whole coverage between each cell, but
+ may create some irregular shapes, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Voronoi-irregular-shape"
+
+\end_inset
+
+ shows big cell number 3836 that is narrow in the west-east direction, but
+ the cell direction is almost to the north.
+\end_layout
+
+\begin_layout Standard
+Voronoi cell plan creation algorithm is described in Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Voronoi-cell-creation"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+For each BTS technology and frequency do following:
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Separate omnidirectional BTS from directional BTS.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Create omnidirectional BTS cell hexagon geometry based on BTS cell's radius.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Cluster directional BTS that are close to each other together.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+This is used because MNO does not always site information for BTS.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Cluster center point will be cell site for each BTS in that cluster.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Each BTS location will be moved a little in the direction of that BTS cell
+ direction.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+This will force Voronoi diagram builder to build cells for each BTS in the
+ correct direction (one cell site will have correct sectors).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Add moved BTS locations to Voronoi diagram builder.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Build Voronoi diagram
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+For each BTS:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Find geometry in Voronoi diagram that has BTS moved location inside it.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+That geometry will be that BTS cell.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Cut cell geometry with that hexagon with BTS maximum radius.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Set BTS site location back to its original location.
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Voronoi cell creation algorithm.
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Voronoi-cell-creation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+CSV and best serving data files input
+\end_layout
+
+\begin_layout Standard
+MNOs provide sometimes so-called 
+\begin_inset Quotes eld
+\end_inset
+
+best serving data
+\begin_inset Quotes erd
+\end_inset
+
+ in raster format.
+ Each frequency cells are in separate layers.
+ BSD example was shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BSD"
+
+\end_inset
+
+.
+ For working with each cell geometry, these files must be first converted
+ from raster to vector format.
+ This is done with ogr2ogr tool 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ogr2ogr"
+
+\end_inset
+
+.
+ As with Voronoi method, there are no overlaps between cells in the same
+ frequency.
+ Again cell enlargement modification could be added for each cell after
+ creating the cell plan.
+ 
+\end_layout
+
+\begin_layout Standard
+CSV files are still used for extra cell plan info, but the geographical
+ areas are taken from the BSD raster files.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+CSV and RSSI files input
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement O
+overhang 0in
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/rssi_one_cell.png
+	lyxscale 50
+	height 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pictures/rssi_one_cell_legend.png
+	lyxscale 35
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+RSSI cell with its dBm values example near water.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RSSI-cell-example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+As with BSD data, CSV files are used for all the extra cell attributes,
+ but geographical data is taken from the RSSI data.
+ RSSI data is the biggest in data volume.
+ Each cell in the network has very precise geometries where each geometry
+ has RSSI what value that cell should have in that geographical location.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RSSI-cell-example"
+
+\end_inset
+
+ shows one cell RSSI values on the map.
+ MNO holds this data in databases and it needs a little bit more preprocessing
+ before Cell Plan Calculator could do anything with it.
+ First signal strengths period is selected, usually, period -80...-83dBm is
+ selected.
+ Per each cell all the geometries that have the RSSI value in selected period
+ would be downloaded from the database and the convex hull algorithm will
+ be applied to these geometries.
+ The resulting geometry is polygon where all the selected geometries are
+ inside of it.
+ Shapefile is created from these polygons and that is used like in the BSD
+ method.
+ 
+\end_layout
+
+\begin_layout Standard
+Each cell area was selected according to its RSSI value.
+ Unlike BSD, the cells derived from RSSI data can overlap in the frequency
+ band.
+ This method could leave some uncovered 
+\begin_inset Quotes eld
+\end_inset
+
+holes
+\begin_inset Quotes erd
+\end_inset
+
+ in the whole cell plan coverage - there may be areas where each cell RSSI
+ value is lower than selected period, this could be improved with selecting
+ RSSI period with lower decibels.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Cell Plan Calculator
+\end_layout
+
+\begin_layout Standard
+Cell plan Calculator takes in a configuration file in JavaScript Object
+ Notation (JSON
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "JSON"
+description "JavaScript Object Notation"
+
+\end_inset
+
+) format.
+ Everything necessary for its work is described there, but extra flags can
+ be added to change calculator behavior.
+ There are flags for changing the output file location for easier automation
+ scripts.
+ MNOs are changing their network day-to-day to adjust to subscribers needs
+ and because of that cell plans need to be up to date with real world situation.
+ 
+\end_layout
+
+\begin_layout Standard
+Cell plan generator was built to work in five steps.
+ Generation could skip some steps if they are not needed for some specific
+ MNO.
+\end_layout
+
+\begin_layout Paragraph
+Parsing CSV files.
+\end_layout
+
+\begin_layout Standard
+First step is parsing CSV(or XML) input files.
+ This step will read in one or more CSV files.
+ Each file can be described separately to the calculator in the configuration
+ file.
+ As MNOs configurations and cell data files may vary then configuration
+ file is made to be very flexible.
+ A configuration file example is in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Cell-Plan-Calculator-configuration"
+
+\end_inset
+
+.
+ The configuration file is used for reading CSV files in and then converting
+ them to a specific form that all the next step can use.
+\end_layout
+
+\begin_layout Paragraph
+Parsing rules.
+\end_layout
+
+\begin_layout Standard
+Rules are used for configuring two things: cell's radius and its boolean
+ value with true if a cell is omnidirectional and false if it is directional.
+ It is used when input file does not have a radius or omnidirectional attribute
+ info.
+ Rules are described in a separate file, which location is given in configuratio
+n file.
+ An example of the rules file is given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Rules-example"
+
+\end_inset
+
+.
+\begin_inset Wrap table
+lines 0
+placement O
+overhang 0in
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "40text%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+radius|isOmni|expression
+\end_layout
+
+\begin_layout Plain Layout
+50|0|cell_type == "MICRO"
+\end_layout
+
+\begin_layout Plain Layout
+10000|1|frequency == "GSM900"
+\end_layout
+
+\begin_layout Plain Layout
+6000|1|frequency == "GSM1800"
+\end_layout
+
+\begin_layout Plain Layout
+10000|1|true
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Cell Plan Calculator input rules file example.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Rules-example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rules file contains three columns, separated by a pipe character.
+ The first column has a resulting radius.
+ Radius is used for limiting cell areas from reaching too far from the cell
+ site.
+ It is used when generating omnidirectional cells: a radius is used for
+ polygons radius and if Voronoi cell is very large, then it is also trimmed
+ with radius.
+ Radius depends on different things, for example, cells with different frequenci
+es have different reaches.
+ The second column has resulting omni cell boolean value.
+ If the boolean value is true, then Cell Plan Calculator will generate that
+ cell as omnidirectional.
+ Otherwise, it will be counted as a directional cell.
+ The last column holds the expression for given rule.In expressions, conditionals
+ are described for the cells.
+ if they match with cell's attribute, then selected radius and isOmni parameter
+ values will be chosen to that cell.
+\end_layout
+
+\begin_layout Standard
+The tool will start testing expressions from the first one and if expression
+ fails, then will be moving to the next one.
+ If successful validation has been found, then that radius and omni cell
+ values will be used.
+ e.g if the first expression is successful, then it would not try the next
+ ones.
+ The last one in the list should be the default value if other expressions
+ have failed.
+ 
+\end_layout
+
+\begin_layout Standard
+Expressions are written in MVEL 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MVEL"
+
+\end_inset
+
+ and its comparison and logical operators can be used for describing rules.
+ All cell attribute names, which are not removed from input data with configurat
+ion, can be used as variables in all three fields.
+ Variables are case sensitive.
+ 
+\end_layout
+
+\begin_layout Standard
+Radius, omnidirectional boolean value, and their conditions are selected
+ with MNO representatives because it is unique with each MNO.
+\end_layout
+
+\begin_layout Paragraph
+Generating first geometry using Voronoi generation method.
+\end_layout
+
+\begin_layout Standard
+After parsing rules, geometry is generated for each cell.
+ Geometry shape style is given in properties.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Replacing first geometry if needed, using BSD or RSSI methods.
+ 
+\end_layout
+
+\begin_layout Standard
+After first geometry generation, cell's geometries that are given in BSD
+ or RSSI input files will be overwritten.
+ If both are given, then first geometries will be overwritten with BSD geometrie
+s and after that with RSSI geometries.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Add additional modifications to the generated cells.
+\end_layout
+
+\begin_layout Standard
+There are multiple modifications built for the modifying whole cell plan.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cut cell - Will cut the whole cell plan with given geometry.
+ Leaves in only the cells that intersect with input geometry.
+ Good for cases where you want to work with only one part of the cell plan
+\end_layout
+
+\begin_layout Itemize
+Enlarge cell - Will enlarge each cell in a cell plan.
+ Enlargement takes in buffer ratio parameter.
+ The buffer will be added to the cell with the radius calculated with this
+ formula: buffer ratio to the square root of the cell area.
+\end_layout
+
+\begin_layout Itemize
+Stretch cell - Each cell in a cell plan will be stretched in cell's direction
+ and perpendicular direction by direction multiplier and perpendicular direction
+ multiplier.
+\end_layout
+
+\begin_layout Itemize
+Convex Hull cell -Takes Convex Hull over cell and cell site for each cell
+ in cell plan.
+ When using RSSI generated geometries, sometimes cell geometry may not contain
+ cell site itself.
+ Convex Hull will add cell site to cell geometry.
+\end_layout
+
+\begin_layout Itemize
+Ellipse cell - Replaces each cell's geometry with ellipse for each cell
+ in cell plan.
+ Ellipse is an approximation of the original cell geometry.
+ 
+\end_layout
+
+\begin_layout Subsection
+Cell plan quality estimation with maximum likelihood (MLE)
+\end_layout
+
+\begin_layout Standard
+MLE principal can be used to compare the quality of different PDF estimates.
+ Higher likelihood value indicates that the PDF is more precise estimate
+ to the real probability distribution what generated the measured data.
+ 
+\end_layout
+
+\begin_layout Standard
+Likelihood is defined as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L=\Prob(measurements|model).
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we consider simplifying assumption that measurements are independent,
+ then we can apply simplified formula:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L=\Prob(measurements|model)=\underset{i}{\prod}\Prob(x_{i}|\theta),
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\theta$
+\end_inset
+
+ is a vector of parameters;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ are individual measurements.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+In practice it is often more convenient to work with the logarithm of the
+ likelihood function, called log-likelihood: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\log\, L=\log\,\Prob(measurements|model)=\log\underset{i}{\,\prod}\Prob(x_{i}|\theta)=\underset{i}{\sum}\log\,\Prob(x_{i}|\theta).
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For applying log-likelihood to cell plan and mobile measurements, formula
+ would be like this: 
+\begin_inset Formula 
+\begin{equation}
+\log\mathcal{L}=\log\Prob(\text{measurements|model})=\log\prod_{i}\Prob(x_{i}|C_{i})=\sum_{i}\log\Prob(x_{i}|C_{i}).\label{eq:loglikelihood}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $i=1...m$
+\end_inset
+
+ are mobile events actual locations;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $i=1...m$
+\end_inset
+
+ are cells that event 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ was connected to;
+\end_layout
+
+\begin_layout Itemize
+models are the SDPF cell plans created with methods in appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Mathematical-model-of-SPDF"
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+The implementation for changing the cell plan polygons into an SPDF was
+ taken from the paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spdf2014Vajakas"
+
+\end_inset
+
+ - applied Gaussian blur with kernel proportional to square root of the
+ cell polygon area.
+ SPDF estimation and its implementation is described in appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Mathematical-model-of-SPDF"
+
+\end_inset
+
+ because it is necessary part of the thesis and the presentation is not
+ published.
+\end_layout
+
+\begin_layout Standard
+The reason to use continuous SPDF is instead of practically used polygons
+ is that MLE needs a function that does not equal to zero at any location,
+ or else likelihood value will be zero due to single outlier in data.
+ Small probability was assigned to outliers so that each ME still has an
+ probability to be connected to the cell even when it is not near its area
+ of coverage.
+ 
+\end_layout
+
+\begin_layout Standard
+Based on the SDPF implementation in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Algorithm-Bayesian_PDF"
+
+\end_inset
+
+, conditional probability was calculated to visualize Bayes' rule influence
+ to each cell.
+ For each pixel, following probabilities were calculated:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Prob(C_{i}|x)=\frac{\Prob(x|C_{i})}{\Prob(x|C_{k})},\label{eq:conditional_probability}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+ is the cell connected from location 
+\begin_inset Formula $x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x$
+\end_inset
+
+ is the ME location.
+\end_layout
+
+\begin_layout Standard
+Formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:conditional_probability"
+
+\end_inset
+
+ shows cell connectivity probability for each pixel.
+\end_layout
+
+\begin_layout Standard
+In the Formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:conditional_probability"
+
+\end_inset
+
+ we assume that probability to connect to the network is 100%, i.e:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{i}\Prob(C_{i}|x)=1.\label{eq:connectivity_probability}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:connectivity_probability"
+
+\end_inset
+
+ means that if ME is at the location 
+\begin_inset Formula $x$
+\end_inset
+
+ then it must be connected to a cell.
+ 
+\end_layout
+
+\end_body
+\end_document

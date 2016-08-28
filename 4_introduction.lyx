@@ -1,0 +1,2021 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage[a4paper]{geometry}
+
+% General packages for math in general, theorems and symbols 
+% Read ftp://ftp.ams.org/ams/doc/amsmath/short-math-guide.pdf for further information
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{amssymb}
+% A way to define theorems and lemmata
+
+% Optional calligraphic fonts    
+% \usepackage[mathscr]{eucal}
+
+% Packages for building tables and tabulars 
+\usepackage{array}
+\usepackage{tabu}   % Wide lines in tables
+\usepackage{xspace} % Non-eatable spaces in macros
+
+% Including graphical images and setting the figure directory
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% Packages for getting clickable links in PDF file
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+% 
+
+% Packages for defining colourful text together with some colours
+\usepackage{color}
+\usepackage{xcolor} 
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+% Standard package for drawing algorithms
+% Since the thesis in article format we must define \chapter for
+% the package algorithm2e (otherwise obscure errors occur) 
+\let\chapter\section
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+
+% Fix a  set of keywords which you use inside algorithms
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKwData{typeInt}{Int}
+\SetKwData{typeRat}{Rat}
+\SetKwData{Defined}{Defined}
+\SetKwFunction{parseStatement}{parseStatement}
+
+
+% Nice todo notes
+\usepackage{todonotes}
+
+% Define your favorite macros that you use inside the thesis 
+% Name followed by non-removable space
+\newcommand{\proveit}{ProveIt\xspace}
+
+% Macros that make sure that the math mode is set
+\newcommand{\typeF}[1] {\ensuremath{\mathsf{type_{#1}}}\xspace}
+\newcommand{\opDiv}{\ensuremath{\backslash \mathsf{div}}\xspace} 
+
+% Nice Todo box
+\newcommand{\TODO}{\todo[inline]}
+
+% A way to define theorems and lemmata
+\newtheorem{theorem}{Theorem}
+\end_preamble
+\use_default_options true
+\master 0_thesis.lyx
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+Motivation
+\end_layout
+
+\begin_layout Standard
+Researchers are trying to understand human mobility patterns.
+ Insight to human mobility could help with different issues.
+ In urban planning, understanding how people come and go helps to determine
+ how to build infrastructure, how to reduce traffic congestions, or how
+ to reduce pollution.
+ Knowing people home and work locations, helps to plan commuting routes
+ between work and home.
+ In medicine, it could help to understand how some disease spreads.
+ Human movement data is needed to analyze this kind of problems.
+ Collecting that data traditionally is costly.
+ Doing movement surveys and direct observations need time, money and usually,
+ result in small sample sizes 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "humanMobility"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A simpler way to collect data is to use the Mobile Network Operators (MNO)
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MNO"
+description "Mobile Network Operators"
+
+\end_inset
+
+ collected positioning data.
+ Most people in the world use mobile phones and MNO collects events made
+ when mobiles are used for SMS, calling or the Internet.
+ These events metadata includes the cell tower where the mobile device was
+ connected at the time of the event.
+ This data is collected for other purposes but the location info can be
+ used for positioning the mobile devices 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The cell tower is at one point on the map, but that does not mean that the
+ mobile device is there.
+ Location positioning accuracy could be 100m to 1km in urban areas and in
+ rural areas up to 30 km 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TheoreticalandMethodologicalFrameworkforMeasuringPhysicalCoPresencewithMobilePositioningDatabases"
+
+\end_inset
+
+.
+ To describe the possible location area for the mobile device, that is connected
+ to some cell, cell plans are used to visualizing cell effective area coverage.
+ MNOs usually have details following: each cell tower location on the map;
+ which direction each cell on the tower is facing; other cell describing
+ attributes 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+ What they do not always have is effective area coverage information.
+ For that different algorithms are used for generating that area.
+\end_layout
+
+\begin_layout Subsection
+Structure of the thesis
+\end_layout
+
+\begin_layout Standard
+Chapter 1 has the introduction.
+ It gives an overview of the topic, describing cellular network and mobile
+ positioning data.
+ After that, there is described what has been previously done in this topic
+ research and what this thesis will add to that.
+ Chapter 2 describes the data and different methods what are used in this
+ thesis.
+ Chapter 3 shows the results of the thesis and Chapter 4 contains the conclusion
+s and the discussion about the results.
+\end_layout
+
+\begin_layout Subsection
+Background
+\end_layout
+
+\begin_layout Subsubsection
+Description of the field
+\end_layout
+
+\begin_layout Paragraph
+Mobile technologies.
+\end_layout
+
+\begin_layout Standard
+To call another person, you need a mobile phone and the network connection.
+ So the first thing you need is Mobile Equipment (ME
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ME"
+description "Mobile Equipment"
+
+\end_inset
+
+), that is your physical phone or device what is used for connecting to
+ the cellular network.
+ Each ME is uniquely identified in the network by the International Mobile
+ Equipment Identity (IMEI
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "IMEI"
+description "International Mobile Equipment Identity"
+
+\end_inset
+
+) number.
+ In Europe, everyday phone users do not encounter this problem, but ME must
+ be able to operate on a cellular network.
+ There are two basic technologies in mobile phones: Code Division Multiple
+ Access (CDMA
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CDMA"
+description "Code Division Multiple Access"
+
+\end_inset
+
+) and Global System for Mobiles (GSM
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GSM"
+description "Global System for Mobiles"
+
+\end_inset
+
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "telecom-infrastructurenetworks"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Segan 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pcMag2015CDMAvGSM"
+
+\end_inset
+
+ describes what technology you need when you want to buy a new phone in
+ the United States.
+ In Europe, GSM radio system is used.
+ Problem is that with GSM carriers verify users with Subscriber Identity
+ Module (SIM
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SIM"
+description "Subscriber Identity Module"
+
+\end_inset
+
+) card and CDMA carriers use network-based whitelists.
+ Phones with only GSM support can not operate in CDMA networks and vice-versa.
+ Besides that when you change the phone you just have to take out the SIM
+ in GSM phone and put it into another phone.
+ In CDMA you need carrier's permission to change the phone.
+ 
+\end_layout
+
+\begin_layout Standard
+The main difference is in the core radio signaling technology.
+ CDMA uses spread spectrum signal encoding, which transmits data of each
+ subscriber over the entire frequency spectrum of the antenna all the time,
+ while GSM assigns a time slot for each subscriber's data where no other
+ subscriber can have access 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+ In CDMA 
+\begin_inset Quotes eld
+\end_inset
+
+code division
+\begin_inset Quotes erd
+\end_inset
+
+ each subscriber unique key is assigned which is used to decode combined
+ signal into its individual calls.
+ In GSM 
+\begin_inset Quotes eld
+\end_inset
+
+time division
+\begin_inset Quotes erd
+\end_inset
+
+ subscriber pieces the call back together from assigned time slots.
+\end_layout
+
+\begin_layout Standard
+Code division method need more processing power, but is more powerful and
+ flexible technology and when GSM was upgraded to 3G, it started to use
+ CDMA technology, but it was called Wideband CDMA (WCDMA
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "WCDMA"
+description "Wideband CDMA"
+
+\end_inset
+
+) or Universal Mobile Telephone System (UMTS
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "UMTS"
+description "Universal Mobile Telephone System"
+
+\end_inset
+
+).
+ WCDMA uses wider channels than CDMA (like the name suggests) but has more
+ data capacity.
+ To increase data transfer speeds, GSM 3G was upgraded to High Speed Packet
+ Access (HSPA
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "HSPA"
+description "High Speed Packet Access"
+
+\end_inset
+
+), which is known as 3.5G.
+ Later HSPA was upgraded to Evolved High Speed Packet Access (HSPA+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "HSPA+"
+description "Evolved High Speed Packet Access"
+
+\end_inset
+
+)(3.75G).
+\end_layout
+
+\begin_layout Standard
+Both systems will be soon upgraded to a common global standard named Long
+ Term Evolution (LTE
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LTE"
+description "Long Term Evolution"
+
+\end_inset
+
+).
+ LTE is globally accepted 4G wireless standard.
+ Report 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "openSignal2016LTEReport"
+
+\end_inset
+
+ shows that currently there are 148 countries with LTE networks and 10 countries
+ are scheduled to go online with LTE networks.
+ First LTE network was deployed in Estonia 2010 by Telia (then named EMT),
+ and all three main MNOs had LTE support from the beginning of 2013.
+\end_layout
+
+\begin_layout Standard
+Besides technological platforms CDMA, GSM or LTE, there are also different
+ standards and protocols that must be supported by the mobile devices.
+ This includes network 
+\begin_inset Quotes eld
+\end_inset
+
+generations
+\begin_inset Quotes erd
+\end_inset
+
+ 2G, 3G, 4G and frequency bands that they work in.
+ 2G was first digital network and had added a link to the Internet.
+ 3G increased the communication speed and added various value-added services
+ like video calling, live streaming, mobile internet access, etc.
+ 4G (also known as LTE) enabled ultra-broadband Internet access, gaming
+ services, and high definition television 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "evolutionarySteps"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In Estonia, 2Gs is supported on bands GSM 900, GSM 1800, 3G on UMTS 900,
+ UMTS 2100, 4G on LTE 800, LTE 1800, LTE 2600 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gsmarena"
+
+\end_inset
+
+.
+ Numbers behind the technologies are showing in what frequency band they
+ are working (i.e.
+ 900 means that it works in a frequency band that is near 900MHz).
+\end_layout
+
+\begin_layout Paragraph
+Public switched telephone network
+\end_layout
+
+\begin_layout Standard
+Mobile equipment connects to the network by the Base Transceiver Station
+ (BTS
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "BTS"
+description "Base Transceiver Station"
+
+\end_inset
+
+).
+ It is the antenna that is on top of the radio tower.
+ It carries out radio communications between the network and the mobile
+ equipment.
+ It handles speech encoding, encryption, multiplexing and modulation/demodulatio
+n of the radio signals 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+ BTS has an assigned CGI value.
+ CGI is made of four identification values: Mobile Country Code (MCC
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MCC"
+description "Mobile Country Code"
+
+\end_inset
+
+), Mobile Network Code (MNC
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MNC"
+description "Mobile Network Code"
+
+\end_inset
+
+), Location Area Code (LAC
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LAC"
+description "Location Area Code"
+
+\end_inset
+
+) and Cell Identity (CI
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CI"
+description "Cell Identity"
+
+\end_inset
+
+).
+ MCC shows in what country cell is location, MNC to which network operator
+ it belongs to and LAC shows in which location area it belongs.
+ CI shows cell id, depending on MNOs it may be unique over all network or
+ unique in LAC 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shareTechnote"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There are two types of BTSs: directional and omnidirectional.
+ BTSs have usually the directed antennas and one BTS covers 120-180 degree
+ sector of an area and a tower with 3 BTSs will cover all 360 degrees.
+ Depending on use cases one tower could also hold only one or two BTS with
+ different sector degrees and for redundancy one tower could also be serviced
+ by several overlapping BTSs.
+ Omnidirectional antennae transmit in all directions and are usually alone
+ on their tower 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TrackingMovementsWithWMobilePhoneBillingData"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Base Station Controller (BSC
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "BSC"
+description "Base Station Controller"
+
+\end_inset
+
+) controls a number of BTSs in a proximate geographical area, that is BTS
+ in a single location area.
+ BSC handles allocation of radio channels, frequency, power and signal measureme
+nts.
+ If ME changes BTS in a single location area, then BSC is responsible for
+ handover procedures.
+ Handover is changing ongoing call or data session from one BTS to another.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/MNO_network_components.png
+	lyxscale 40
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The Illustration of PSTN and hierarchy of its network components 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pstn"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+BSCs are controlled by Mobile Switching Centers (MSC
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MSC"
+description "Mobile Switching Centers"
+
+\end_inset
+
+).
+ MSCs are one or many, depending on the size of the MNO.
+ MSC handles the call and messaging routing, updating different registries
+ within MSC and the central system and handover between different location
+ areas and MSCs.
+ MSC also contains Visitor Location Register (VLR
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "VLR"
+description "Visitor Location Register"
+
+\end_inset
+
+).
+ VLR is the registry for holding the information about the location area
+ and the BTS to which ME are connected.
+ 
+\end_layout
+
+\begin_layout Standard
+MSC reports to the Network Management System (NMS
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "NMS"
+description "Network Management System"
+
+\end_inset
+
+).
+ All the administrative and central procedures are done in NMS.
+ Data storage warehouses and network handling servers are also there.
+ This network with connections to the other MNOs is called Public Switched
+ Telephone Network (PSTN
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PSTN"
+description "Public Switched Telephone Network"
+
+\end_inset
+
+) and is illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pstn"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+MNOs could share some of the network equipment and network modules between
+ themselves (e.g.
+ it is not uncommon to share the antenna between MNOs).
+ There are even virtual MNOs that do not own any network infrastructure
+ but rent it from other MNOs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Cell plan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/RSSI_decrease.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Cell RSSI decreases with distance increase from the cell site 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "agrawal2010introduction"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RSSI_decrease"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Each BTS has a Cell Identity (CI
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CI"
+description "Cell Identity"
+
+\end_inset
+
+), like was mentioned in the last subsection.
+ Cell is a geographical coverage area, where ME could connect to that cell
+ BTS.
+ Radio tower where the BTS is connected is called the cell site.
+ The cellular network is made of BTSs and their cells, hence the name.
+ Each cell can cover a limited number of ME within the cell coverage area.
+ Capacity is limited by available bandwidth and operational requirements.
+ To give the best user experience, MNO has to add or remove BTSs and size
+ cells after the need to handle expected traffic demands 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "telecom-infrastructurenetworks"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+BTS with omnidirectional antennae tend to have cell with a hexagonal pattern,
+ directional antenna is ofter diamond-shaped 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TrackingMovementsWithWMobilePhoneBillingData"
+
+\end_inset
+
+.
+ But in real world shapes are more distorted by atmospheric conditions,
+ topographical contours or architecture.
+ ME connects to a BTS over radio signal, so probability for ME to connect
+ to a specific BTS is depending on Received Signal Strength Indicator (RSSI
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "RSSI"
+description "Received Signal Strength Indicator"
+
+\end_inset
+
+).
+ Signal strength is measured in dBm, further the ME from BTS is, the lower
+ the dBm value.
+ RSSI change with cell's distortions and overlapping is illustrated in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RSSI_decrease"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "agrawal2010introduction"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/BSD.png
+	lyxscale 30
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Best serving data where each cell is in the different color 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ubicomp"
+
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BSD"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/Voronoi.png
+	lyxscale 30
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Voronoi tessellation where the rectancle points are cell sites 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ubicomp"
+
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Voronoi-tessellation."
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/cellplan_frequency_sites.png
+	lyxscale 43
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Cell plan with cells are colored by the frequency.
+ Dots are the cell sites.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cellplan_frequency_example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+When ME is close to the edge of a cell, where RSSI is low, then handover
+ occurs and ME is serviced by another BTS.
+ When ME is near the edges of multiple cells, then ping-pong effect may
+ occur, meaning ME will be switched from one BTS to another multiple times
+ in a row.
+ For ME user everything works fine, but by BTS positioning, it will show
+ that ME location starts jumping fast from one cell to another 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TrajectoryReconstructionVajakas"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Cell size depends on its frequency and type.
+ Higher frequency cell's strength will decrease faster than with lower frequency.
+ Cells are categorized by their size from largest to smallest: macro, micro,
+ pico, femto.
+\end_layout
+
+\begin_layout Standard
+Macro cells main purpose are to cover large areas.
+ Radius may be up to several kilometers.
+ Generally most rural and suburban areas are covered by macro cells.
+ 
+\end_layout
+
+\begin_layout Standard
+Micro cells are mostly used in urban areas with a radius of hundreds of
+ meters.
+ They are deployed to places with higher traffic densities, e.g.
+ large shopping malls.
+ 
+\end_layout
+
+\begin_layout Standard
+Pico cells are small cells with radius up to tens of meters.
+ Used in places with very high traffic volume, e.g.
+ train stations or office buildings.
+ BTS of pico cells tend to be omnidirectional.
+ 
+\end_layout
+
+\begin_layout Standard
+Femto cells are smallest cells that are used in residential indoors where
+ the mobile operator network may not be provided by the operator.
+ Instead, it may be connected to the digital subscriber line (i.e.
+ digital data is transmitted over telephone lines) .
+ 
+\end_layout
+
+\begin_layout Standard
+These categories are complemented with two additional types: umbrella and
+ metro cells.
+ Umbrella cells are the combination of larger cells with several smaller
+ cells, where a larger cell is used for providing coverage and mobility
+ between smaller cells.
+ Metro cells are very similar to micro cells, but metro cells integrate
+ all elements required for the BTS operation in one compact device 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "penttinen2015telecommunications"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Cell plan is the mapping of each cell in the mobile network so each cell
+ has an approximated geographical area where the ME can connect to that
+ cell 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TrajectoryReconstructionVajakas"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+CDR gives a cell ID, usually in a form of CGI) where the ME was connected
+ on when some event happened.
+ That ID gives the cell site geographical location.
+ When BTS is omnidirectional, then site's location could be good enough
+ for ME location, because it is in the center of its coverage area.
+ When BTS has a directional antennae, then BTS is at the corner of the coverage
+ area and mostly ME is somewhere else when it is connected to that BTS.
+ More precise positioning would be using the center of the coverage area
+ geometry.
+ There are two methods to get the cell geometry.
+ One is to measure or calculate RSSI measures for any geographical location.
+ MNOs have special programs for generating best serving data (BSD
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "BSD"
+description "Best Serving Data"
+
+\end_inset
+
+).
+ Best serving data is cell map that takes into account cell sector and propagati
+on models and is made on simulated coverage.
+ Each location in a grid is associated with the BST which covers that location
+ best as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BSD"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Calabrese:2014:USU:2658850.2655691"
+
+\end_inset
+
+.
+ This method assumes that when ME is in some location where some BTS has
+ the best serving (RSSI value is better than other cells), then ME would
+ connect to that cell.
+ 
+\end_layout
+
+\begin_layout Standard
+Another way to create the cell geometry is a more simple way without the
+ need for radio measurements.
+ Free-space propagation is assumed with that all BTSs have the same equivalent
+ radiated power.
+ With these assumptions, Voronoi tessellation technique could be used on
+ the cell site locations.
+ Voronoi tessellation partitions the space into cells based on the distance
+ between each point and the closest BST.
+ Set of points that are closer to the one BST than others is included to
+ that cell 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ExploringTheMobilityOfMobileUsers2013PhyA"
+
+\end_inset
+
+.
+ Resulting graph is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Voronoi-tessellation."
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Cell plans in real world are not so clear as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BSD"
+
+\end_inset
+
+ and Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Voronoi-tessellation."
+
+\end_inset
+
+.
+ As mentioned before, cells can have different frequencies and sizes.
+ They can also overlap to produce better coverage.
+ Cells with different frequencies do not form cellular-like network, because
+ it is not unusual that on the same tower two directional BTSs with different
+ frequencies or technologies are directed in the same direction.
+ When taking into account all the frequencies and technologies that are
+ used in building the mobile network, picture would be more as seen in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cellplan_frequency_example"
+
+\end_inset
+
+, where each technology with its working frequency (e.g.
+ GSM900, UMTS2100) are shown using different color for each different technology.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Mobile Positioning Data.
+\end_layout
+
+\begin_layout Standard
+Collecting people location information by surveys and observation is too
+ resource-consuming work, a cheaper method for data with bigger sample size
+ would be mobile data.
+ That is considered most promising data source for measuring the mobility
+ of people 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+ Most people in the world has a mobile phone.
+ There are 5 billion subscribers to mobile networks.
+ Subscriptions devices itself has reached 7.4 billion.
+ Which means that there are more devices connected to the mobile network
+ than there are people in the world.
+ And that number is growing around 3 percent per year.
+ That number is so large due to inactive subscriptions, multiple device
+ ownership and subscriptions for a different type of calls 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ericsson2016MobilityReport"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Mobile devices can be used for collecting their location data with mobile
+ positioning.
+ The mobile positioning means that it is possible to locate devices in time
+ and space with certain accuracy using technology (e.g.
+ mobile network infrastructure or Global Positioning System (GPS)
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GPS"
+description "Global Positioning System"
+
+\end_inset
+
+) to get the location of the mobile device.
+ That data about the location and movement of mobile devices is called mobile
+ positioning data.
+ 
+\end_layout
+
+\begin_layout Standard
+There are three methods for collecting data.
+\end_layout
+
+\begin_layout Enumerate
+GPS and Assisted GPS (A-GPS)
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "A-GPS"
+description "Assisted Global Positioning System"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Wireless network (WiFi)
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "WiFi"
+description "Wireless network"
+
+\end_inset
+
+ location databases
+\end_layout
+
+\begin_layout Enumerate
+Network antenna-based location database
+\end_layout
+
+\begin_layout Standard
+Assisted GPS is used to speed up first GPS location calculation.
+ Usually using WiFi and network antenna-based location databases to pinpoint
+ device location before getting a more precise reading with GPS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PositioningSystemsandTechnologies"
+
+\end_inset
+
+.
+ WiFi and network antenna-based location databases use information about
+ where the given network antenna or WiFi transmitter geographically is located
+ to predict mobile device location.
+ WiFi and network antenna-based locations are used when there is not possible
+ to use GPS location.
+ As for GPS to work, there must be line-of-sight to at least three GPS satellite.
+ So GPS do not work indoors and in the 
+\begin_inset Quotes eld
+\end_inset
+
+urban canyons
+\begin_inset Quotes erd
+\end_inset
+
+ created by buildings on either side of a street 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1108/EUM0000000007074"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Network antenna-based location database system with common name Mobile Positioni
+ng System (MPS
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MPS"
+description "Mobile Positioning System"
+
+\end_inset
+
+) is used by MNOs to pinpoint the location of the mobile phones using network
+ infrastructure.
+ There are different methods to locate a mobile device 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cell Global Identity (CGI)
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CGI"
+description "Cell Global Identity"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Trilateration of antenna to device and back
+\end_layout
+
+\begin_layout Itemize
+Angle of received signal
+\end_layout
+
+\begin_layout Itemize
+Timing Advance (TA
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "TA"
+description "Timing Advance"
+
+\end_inset
+
+ - radio signal arrival time from antenna to device and back)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement I
+overhang 0in
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pictures/event_coordinate_mapping_using_antenna.png
+	lyxscale 35
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Phone location positioning using cell coordinates
+\begin_inset CommandInset citation
+LatexCommand cite
+key "feasibilityStudy"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PhoneLocationCGI"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+A mobile device knows to which cell it is connected and what is that cell's
+ CGI.
+ From MNO side they can see to which cell the mobile device is connected
+ and what is the cell's identification.
+ From that MNO can look what is that cell's geographical location and know
+ that the mobile device must be somewhere near the cell's location as seen
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PhoneLocationCGI"
+
+\end_inset
+
+.
+ Trilateration is three sites to pinpoint the location of a mobile device.
+ The angle of received signal uses an array of smart antennas that help
+ to determine the angle of the incoming radio signal.
+ Then it is possible to triangulate known signal angles from at least two
+ base stations.
+ Timing Advance takes into account time needed for the signal to reach mobile
+ device and back to cell station 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ratti01102006"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Most commonly CGI+TA+angle of received signal is used, where cell's location
+ is first found after cell's identifier and after that TA is used for calculatin
+g how far the mobile device is from the cell tower and direction of the
+ device is determined after the angle on received signal 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Mobile positioning data can be collected with two different methods: active
+ positioning and passive positioning.
+ 
+\end_layout
+
+\begin_layout Subparagraph
+Active positioning.
+\end_layout
+
+\begin_layout Standard
+Active positioning needs active request and usually requires authorization
+ from device owner.
+ When the positioning request is made then device owner has to give the
+ consent for the request.
+ Most people have seen location request pop-ups on applications and map-related
+ websites or user had to approve location request when installing the applicatio
+n .
+ There are also requests made without user consent.
+ User authorization is not needed if location request is done in the case
+ of emergency.
+ That usually means using MPS, but from July 2016 Estonia and the United
+ Kingdom have implemented the Active Mobile Location (AML
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "AML"
+description "Active Mobile Location"
+
+\end_inset
+
+) system.
+ AML is emergency call-based location solution in Android phones.
+ When smartphone recognizes that an emergency call is made, then phone activates
+ its location services and sends that info to the emergency services automatical
+ly before turning the location services off again 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "eena2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Most usual active positioning is installed applications ability to use the
+ location of the mobile device and positioning work real-time or near-real
+ time.
+ Location Active positioning has beneficiaries from different user groups
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ratti01102006"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Active positioning applications can be divided by their target group of
+ users.
+\end_layout
+
+\begin_layout Itemize
+Services for individual users
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Navigation aids
+\end_layout
+
+\begin_layout Itemize
+Geographically distributed yellow pages
+\end_layout
+
+\begin_layout Itemize
+Educational services
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Services for group of users
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Distributed chats and friend tracking
+\end_layout
+
+\begin_layout Itemize
+Location-based gaming
+\end_layout
+
+\begin_layout Itemize
+Traffic services
+\end_layout
+
+\begin_layout Itemize
+Digital tapestries
+\end_layout
+
+\begin_layout Itemize
+Coordinated actions
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Services for third parties
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Public safety and security
+\end_layout
+
+\begin_layout Itemize
+Family security
+\end_layout
+
+\begin_layout Itemize
+Emergency relief
+\end_layout
+
+\begin_layout Itemize
+Business safety and efficiency
+\end_layout
+
+\begin_layout Itemize
+Commercial and information services
+\end_layout
+
+\begin_layout Itemize
+Location sensitive billing
+\end_layout
+
+\begin_layout Itemize
+Urban Systems mapping
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+There are different applications that are used where location positioning
+ is the main intention, but there are other applications where location
+ data is still collected for value-added services or statistics.
+ Social media applications (e.g.
+ Twitter and Facebook) do not always need location data, but the data is
+ still collected 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There are advantages and disadvantages to active positioning compared to
+ passive positioning.
+ Just like with in person, on-line or telephone surveys, active participation
+ could be requested and sampling techniques could be used.
+ Data collection is easy because participants only need to install positioning
+ application to their phone or approve the periodical network-based location
+ requests.
+ The disadvantage is the need to recruit the respondents, resulting small
+ sample size 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subparagraph
+Passive positioning.
+\end_layout
+
+\begin_layout Standard
+The difference in a passive and active positioning is, that passive positioning
+ does not need to send a request to a mobile device, to position it.
+ Instead of actively making position request, data is already collected
+ to some database by the MNOs or applications.
+ This data usually is not collected with the purpose to collect the location.
+ Applications and MNOs are logging mobile devices activities and these logs
+ can have data that could be linked to a location 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+ This data is used mostly internally for business and marketing purposes
+ (e.g.
+ billing clients, providing statistics, marketing).
+ Location data is used seldom 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ahas2011mobile"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Passive mobile positioning data is mostly referred to the data from MNOs.
+ MNOs are collecting a lot of business purposed data, among them are Call
+ Detail Record (CDR
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CDR"
+description "Call Detail Record"
+
+\end_inset
+
+).
+ One CDR contains a lot of technical information about the recorded activity,
+ but the important fields are subscriber identification, time of the event
+ and identification of the antenna, where the mobile device was connected
+ at the time of the activity.
+ CDRs include in and out calls, SMS and MMS messages activities.
+ If mobile devices use also Internet traffic, then these activities are
+ also included in CDR.
+ MNOs can choose what data they want to store and because of that data about
+ mobile devices locations and how precise could location detection be may
+ differ.
+ The size of the data may also vary, meaning that MNOs may store only 2-3
+ CDRs or even 200-300 CDRs per mobile device per day.
+\end_layout
+
+\begin_layout Standard
+People carry their mobile devices always with them, so CDR data gives an
+ overview of human movements based where they are using their phones.
+ MNOs have also extra info about their subscribers, there may be also access
+ to additional data about the socio-demographic profile (e.g.
+ gender, age) for each mobile device owner.
+ 
+\end_layout
+
+\begin_layout Standard
+The main advantages compared to active positioning is the cost-effectiveness
+ of collecting a large sample of data for all the phone users.
+ With passive data collecting, there is no burden on the respondents because
+ data is collected automatically 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ahas2011mobile"
+
+\end_inset
+
+.
+ Access to that data is more difficult.
+ That is because of privacy.
+ People do not like that other people get access to that sensitive data
+ like their location history.
+ At the same time, MNOs do not like to share their data on business related
+ reasons.
+ If MNO would give their CDR data for research, then it would still not
+ contain the full sample of the whole country.
+ One country can have more than one MNO providing their services (e.g.
+ Estonia have three main MNO companies: Telia, Elisa, Tele2).
+ If selecting only one company then sample contains only their clients and
+ mobile devices that uses their cellular network 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+.
+ Another problem is the CDR data itself.
+ Even if the data size is very large, data accuracy itself is not as good
+ as with GPS collected data.
+ In practice, most CDRs do not have enough information to use more precise
+ positioning methods like using TA or angle of signal arrival because they
+ need more than one base station, but only the base station that is carrying
+ mobile communications are recorded in CDRs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZangBayesianInference"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Data privacy.
+\end_layout
+
+\begin_layout Standard
+A big problem with Location Based Services (LBS
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LBS"
+description "Location Based Services"
+
+\end_inset
+
+) is that people do not like that their movements can be tracked.
+ To encounter that problem there are two solutions.
+ One is asking each person's permission to track them for research purposes.
+ But this means small sample size  because you have to interact with each
+ one.
+ A second way is to anonymize the data.
+ That means there is not possible to connect the data with the person whose
+ data it is.
+ Ratti et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ratti01102006"
+
+\end_inset
+
+ shows the European Union directives, that ensures people privacy rights.
+ There are very precise cases when service providers could work with people's
+ privacy data and when they can give it to third parties.
+ With the European Union directives they can only do that when they have
+ the consent of the service user and the user is informed of the purpose
+ and duration of the process.
+ Another way is to analyze and to give that data to the third party to analyze
+ it, is to anonymize it.
+ Most researchers working with MNOs mobile positioning data are using anonymized
+ and aggregated data.
+ 
+\end_layout
+
+\begin_layout Standard
+Datasets are anonymized to bypass the problem of privacy, so researchers
+ can not track data back to the user to whom that data belongs.
+ Researches like 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ahas2007898,Ratti01102006,ahas2011mobile"
+
+\end_inset
+
+ have to use it to work with the data without the breach of privacy.
+ Ahas et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ahas2011mobile"
+
+\end_inset
+
+ and Tiru 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tiru2014overview"
+
+\end_inset
+
+ bring out the problem, that anonymizing could lose the different aspects
+ of the data, that could be useful to research.
+ Wicker 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wicker2012loss"
+
+\end_inset
+
+ brings out that anonymizing must be done correctly because with location
+ traces could be de-anonymized through correlation with publicly available
+ databases.
+ 
+\end_layout
+
+\begin_layout Standard
+Besides the people's data privacy, another big problem is MNOs business
+ secrets.
+ They do not want to share their cell tower locations and information to
+ others.
+ In this thesis users and cell towers identifications and are changed because
+ of privacy issues.
+ Cell towers real geographical locations are also hidden.
+\end_layout
+
+\begin_layout Subsubsection
+Related work
+\end_layout
+
+\begin_layout Standard
+Passive mobile positioning with CDRs has been used for some time.
+ 
+\end_layout
+
+\begin_layout Standard
+Articles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1108/EUM0000000007074"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ahas2007898"
+
+\end_inset
+
+ used it to research seasonality of foreign tourists space consumption in
+ Estonia.
+ Article 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ratti01102006"
+
+\end_inset
+
+ used it to analyze urban activities in Milan, Italy.
+ Article 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "saluveer2014using"
+
+\end_inset
+
+ describes how passive mobile positioning can be used to find peoples home
+ and work location.
+ But it also mentions that there are accuracy problems and discusses what
+ kind of extra information should be added to MNOs CDR data, to get the
+ more precise location prediction (i.e..
+ take into account that ME location probability is higher in the places
+ where there are roads, point of interests or buildings.)
+\end_layout
+
+\begin_layout Standard
+Article 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TrajectoryReconstructionVajakas"
+
+\end_inset
+
+ used passive mobile positioning with CDR data to reconstruct people movement
+ trajectories.
+ 
+\end_layout
+
+\begin_layout Standard
+Using Voronoi with clustering close BTSs together was used as a cell plan
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ExploringTheMobilityOfMobileUsers2013PhyA"
+
+\end_inset
+
+.
+ They used Voronoi-based cell plan with only omnidirectional cells.
+ They took into account that ME may be in the other cell area not in the
+ one, it is connected to.
+ They proposed to use BSD information instead of simple Voronoi.
+ They also used Maximum Likelihood Estimation (MLE
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MLE"
+description "Maximum Likelihood Estimation"
+
+\end_inset
+
+) for estimating the position of frequent locations.
+\end_layout
+
+\begin_layout Standard
+Article 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZangBayesianInference"
+
+\end_inset
+
+ described the methodology applying Bayesian methods for defining the Spatial
+ Probability Density Functions (SPDF
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SPDF"
+description "Spatial Probability Density Functions"
+
+\end_inset
+
+) for mobile positioning.
+ Estimation was based on Signal-to-Interference-and-Noise Ratio (SINR
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SINR"
+description "Signal-to-Interference-and-Noise Ratio"
+
+\end_inset
+
+) calculations.
+ Bayesian probability estimate was provided for the situations where CGI
+ was the only information to know and no other cells had good enough SINR.
+ The method was tested on the subset of emergency call data, that was limited
+ to situations where only one cell was within the reach of the BTS.
+ They found that the difference between the location measured by the GPS
+ and the MLE provided by that method was improved by 20%, compared to the
+ baseline method.
+ No direct Probability Density Functions (PDF
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PDF"
+description "Probability Density Functions"
+
+\end_inset
+
+) tests were performed and they did not consider that the probability to
+ connect to a specific cell will be reduced where other cells are reachable.
+ 
+\end_layout
+
+\begin_layout Standard
+Unpublished paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spdf2014Vajakas"
+
+\end_inset
+
+ created SPDF estimations with Bayesian rule method.
+ Formulas were created that took into account that probability to connect
+ to a concrete cell will be reduced in locations where other cells are reachable
+, but the paper was lacking in real world tests.
+ 
+\end_layout
+
+\begin_layout Subsection
+Contributions of this work
+\end_layout
+
+\begin_layout Standard
+This thesis concentrates on algorithms on how to position mobile devices
+ from CDR information.
+ Different cell plans creation methods are described and tested with mobile
+ device GPS location and connected cell CGI data.
+ 
+\end_layout
+
+\begin_layout Standard
+Passive mobile positioning SPDF estimations are used for comparing quality
+ of the cell plans.
+ This thesis continues the work 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spdf2014Vajakas"
+
+\end_inset
+
+ which started the research on SPDF estimations with Bayesian rule.
+ Important part of the article is added to the appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Mathematical-model-of-SPDF"
+
+\end_inset
+
+.
+ SPDF estimations methods with and without Bayesian rule are used to verify
+ if the cell plan overlapping is important.
+ 
+\end_layout
+
+\begin_layout Standard
+The theoretical foundation of SPDF and application of Bayesian rule were
+ devised by Toivo Vajakas (original ideas) and Jaan Vajakas (ensured mathematica
+l correctness).
+\end_layout
+
+\begin_layout Standard
+The author applied and adapted the theoretical base to concrete technological
+ stack in Reach-U: devised conversion algorithms for concrete cell plan
+ inputs, implemented the algorithms for cell plan data processing and evaluation
+ (except the code described in appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Mathematical-model-of-SPDF"
+
+\end_inset
+
+), analyzed the results.
+\end_layout
+
+\begin_layout Standard
+Paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spdf2016Vajakas"
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Jaan Vajakas was not included as an author, because as a Google Inc employee,
+ he did not have time to get permission from Google Inc.
+\end_layout
+
+\end_inset
+
+ will be published based on the theory of SPDF estimations with Bayesian
+ rule and the results of this thesis.
+ Paper that was sent to the review is included in the Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BEC2016"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

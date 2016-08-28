@@ -1,0 +1,289 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage[a4paper]{geometry}
+
+% General packages for math in general, theorems and symbols 
+% Read ftp://ftp.ams.org/ams/doc/amsmath/short-math-guide.pdf for further information
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{amssymb}
+% A way to define theorems and lemmata
+
+% Optional calligraphic fonts    
+% \usepackage[mathscr]{eucal}
+
+% Packages for building tables and tabulars 
+\usepackage{array}
+\usepackage{tabu}   % Wide lines in tables
+\usepackage{xspace} % Non-eatable spaces in macros
+
+% Including graphical images and setting the figure directory
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% Packages for getting clickable links in PDF file
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+% 
+
+% Packages for defining colourful text together with some colours
+\usepackage{color}
+\usepackage{xcolor} 
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+% Standard package for drawing algorithms
+% Since the thesis in article format we must define \chapter for
+% the package algorithm2e (otherwise obscure errors occur) 
+\let\chapter\section
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+
+% Fix a  set of keywords which you use inside algorithms
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKwData{typeInt}{Int}
+\SetKwData{typeRat}{Rat}
+\SetKwData{Defined}{Defined}
+\SetKwFunction{parseStatement}{parseStatement}
+
+
+% Nice todo notes
+\usepackage{todonotes}
+
+% Define your favorite macros that you use inside the thesis 
+% Name followed by non-removable space
+\newcommand{\proveit}{ProveIt\xspace}
+
+% Macros that make sure that the math mode is set
+\newcommand{\typeF}[1] {\ensuremath{\mathsf{type_{#1}}}\xspace}
+\newcommand{\opDiv}{\ensuremath{\backslash \mathsf{div}}\xspace} 
+
+% Nice Todo box
+\newcommand{\TODO}{\todo[inline]}
+
+% A way to define theorems and lemmata
+\newtheorem{theorem}{Theorem}
+\end_preamble
+\use_default_options true
+\master 0_thesis.lyx
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Definitions of some basic terms.
+\end_layout
+
+\begin_layout Subsection*
+Mobile network
+\end_layout
+
+\begin_layout Description
+Base
+\begin_inset space \space{}
+\end_inset
+
+Station
+\begin_inset space \space{}
+\end_inset
+
+Controller - Part of the mobile network.
+ Controls BTSs in a single location area.
+ Handles allocation of radio channels, frequency, power, signal measurements,
+ and handovers within a single location area.
+\end_layout
+
+\begin_layout Description
+Base
+\begin_inset space \space{}
+\end_inset
+
+Transceiver
+\begin_inset space \space{}
+\end_inset
+
+Station - Mobile equipment access point to the network.
+ Handles speech encoding, encryption, multiplexing and modulation/demodulation
+ of the radio signals.
+ Each BTS has an assigned CGI.
+\end_layout
+
+\begin_layout Description
+Cell - The geographical area covered by a BTS.
+\end_layout
+
+\begin_layout Description
+Cell
+\begin_inset space \space{}
+\end_inset
+
+plan - Mapping of each cell in the mobile network so each cell has an approximat
+ed geographic area where the ME can connect to that cell.
+ In practice, it is usually defined as a polygon for each cell.
+ In this work we use the same term for the set of continuous SPDF estimates
+ for each cell in the mobile network.
+\end_layout
+
+\begin_layout Description
+Handover - Changing ongoing call or data session from one BTS to another.
+\end_layout
+
+\begin_layout Description
+Mobile
+\begin_inset space \space{}
+\end_inset
+
+Equipment - Physical phone or device what is used for connecting to the
+ cellular network.
+ Each ME is uniquely identified by the IMEI number.
+\end_layout
+
+\begin_layout Description
+Network
+\begin_inset space \space{}
+\end_inset
+
+Management
+\begin_inset space \space{}
+\end_inset
+
+System - Part of the mobile network.
+ Handles administrative and central procedures.
+ Holds data storages warehouses and network handling servers.
+\end_layout
+
+\begin_layout Description
+Mobile
+\begin_inset space \space{}
+\end_inset
+
+Positioning
+\begin_inset space \space{}
+\end_inset
+
+Data - Data collected with mobile positioning about the mobile device location
+ and movement.
+\end_layout
+
+\begin_layout Description
+Mobile
+\begin_inset space \space{}
+\end_inset
+
+Switching
+\begin_inset space \space{}
+\end_inset
+
+Center - Part of the mobile network.
+ Controls BSCs.
+ Handles call and messaging routing, updating different registries within
+ MSC and the central system, and handovers between different location areas.
+\end_layout
+
+\begin_layout Section*
+Statistics
+\end_layout
+
+\begin_layout Description
+Maximum
+\begin_inset space \space{}
+\end_inset
+
+Likelihood
+\begin_inset space \space{}
+\end_inset
+
+Estimation - MLE is a method of estimating population characteristics from
+ a sample by choosing the values of the parameters that will maximize the
+ probability of getting the particular sample actually obtained from the
+ population.
+\end_layout
+
+\begin_layout Description
+Probability
+\begin_inset space \space{}
+\end_inset
+
+Density
+\begin_inset space \space{}
+\end_inset
+
+Function - The PDF of a continuous random variable is a function that can
+ be integrated to obtain the probability that the random variable takes
+ a value in a given interval.
+ Formally, the PDF 
+\begin_inset Formula $f_{x}(x)$
+\end_inset
+
+ of a continuous random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ is the derivative of the 
+\begin_inset Formula $f_{x}(x)=\frac{dF_{x}(x)}{dx}$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

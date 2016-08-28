@@ -1,0 +1,296 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage[a4paper]{geometry}
+
+% General packages for math in general, theorems and symbols 
+% Read ftp://ftp.ams.org/ams/doc/amsmath/short-math-guide.pdf for further information
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{amssymb}
+% A way to define theorems and lemmata
+
+% Optional calligraphic fonts    
+% \usepackage[mathscr]{eucal}
+
+% Packages for building tables and tabulars 
+\usepackage{array}
+\usepackage{tabu}   % Wide lines in tables
+\usepackage{xspace} % Non-eatable spaces in macros
+
+% Including graphical images and setting the figure directory
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% Packages for getting clickable links in PDF file
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+% 
+
+% Packages for defining colourful text together with some colours
+\usepackage{color}
+\usepackage{xcolor} 
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+% Standard package for drawing algorithms
+% Since the thesis in article format we must define \chapter for
+% the package algorithm2e (otherwise obscure errors occur) 
+\let\chapter\section
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+
+% Fix a  set of keywords which you use inside algorithms
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKwData{typeInt}{Int}
+\SetKwData{typeRat}{Rat}
+\SetKwData{Defined}{Defined}
+\SetKwFunction{parseStatement}{parseStatement}
+
+
+% Nice todo notes
+\usepackage{todonotes}
+
+% Define your favorite macros that you use inside the thesis 
+% Name followed by non-removable space
+\newcommand{\proveit}{ProveIt\xspace}
+
+% Macros that make sure that the math mode is set
+\newcommand{\typeF}[1] {\ensuremath{\mathsf{type_{#1}}}\xspace}
+\newcommand{\opDiv}{\ensuremath{\backslash \mathsf{div}}\xspace} 
+
+% Nice Todo box
+\newcommand{\TODO}{\todo[inline]}
+
+% A way to define theorems and lemmata
+\newtheorem{theorem}{Theorem}
+\end_preamble
+\use_default_options true
+\master 0_thesis.lyx
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+For this thesis, Cell Plan Calculator was designed and programmed.
+ It was designed to be flexible in order to be able to use the variety of
+ input data.
+ Cell plans were created for passive mobile positioning.
+ Toivo Vajakas and Jaan Vajakas work on SPDF was used to test which cell
+ plan is better for estimating mobile locations.
+ Test data was collected from MNO and test users.
+ Prior SPDF code was used for creating test cases for collected data.
+ Modifications were made to SPDF code to create the stacked probabilities
+ of each cell in each pixel.
+ Results were visualized and analyzed.
+\end_layout
+
+\begin_layout Subsection
+Discussion
+\end_layout
+
+\begin_layout Standard
+When using different observation data, then MLE values are not comparable.
+ Therefore the relative performance of different models can be only evaluated
+ for each user data separately.
+\end_layout
+
+\begin_layout Standard
+Surprisingly all the Voronoi-based cell plans seem to have better SPDF estimates
+ than the RSSI-based.
+ The expectations were that sophisticated RSSI models would be superior
+ to simple model like Voronoi model.
+ 
+\end_layout
+
+\begin_layout Standard
+Cell plan 
+\begin_inset Quotes eld
+\end_inset
+
+rssi_ellipse
+\begin_inset Quotes erd
+\end_inset
+
+ seems to be most inaccurate based on the SPDF in almost most of the user
+ data, this should be certainly avoided in practice.
+ 
+\end_layout
+
+\begin_layout Standard
+There are notable differences in the ranking of the cell plan variants between
+ users.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:overlapping-cell-model"
+
+\end_inset
+
+ shows how Bayes' rule changes the likelihood estimations.
+ The results show that accounting for cell overlap effect with Bayes' rule
+ had in the majority of cases positive effect.
+ 
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cell_plan_variants_log"
+
+\end_inset
+
+ (c) shows that the best cell plans are not improved by Bayes' rule and
+ worse cell plans are significantly improved.
+ 
+\end_layout
+
+\begin_layout Standard
+In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cell_plan_variants_log"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+voronoi_convexhull
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+voronoi_default
+\begin_inset Quotes erd
+\end_inset
+
+ are practically identical as these methods are internally the same.
+\end_layout
+
+\begin_layout Subsection
+Future plans
+\end_layout
+
+\begin_layout Standard
+Research can be continued in multiple directions.
+ 
+\end_layout
+
+\begin_layout Standard
+One way is to apply the algorithms to larger data sets.
+ One might recruit a bigger group of data gatherers for active data collecting,
+ or use crowd-sourcing data.
+ For example, OpenCellId 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "openCellId"
+
+\end_inset
+
+ collects data with GPS and connected cell's CGI from volunteers.
+ OpenCellId database has 145273 measurements collected over our test period
+ (120316 measurements in EMT, 19846 in Elisa and 5111 in Tele2).
+ 
+\end_layout
+
+\begin_layout Standard
+For more data, it is possible to not to use CDR data at all.
+ Instead use selected data gatherers or crowd-sourced data, that contain
+ GPS location and the connected BTS information for each GPS location.
+\end_layout
+
+\begin_layout Standard
+To further the research with SPDF, extra calculations could be done with
+ Bayesian prior.
+ For example, one could consider GIS layers of roads and buildings.
+ Probability to encounter ME devices should be higher in near roads and
+ buildings.
+ It is possible to group events not only by users but by other attributes,
+ e.g.
+ separate urban and rural events, to test how it will effect MLE values.
+ Too fine-grain subsets may bring up the too small dataset and over-fitting
+ problems.
+ 
+\end_layout
+
+\begin_layout Standard
+CDR event type was not taken into account in our analysis.
+ For example, if event type shows the location update, it might suggest
+ that ME is on the edge of the cell, not somewhere in the middle of the
+ cell.
+ 
+\end_layout
+
+\end_body
+\end_document

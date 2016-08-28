@@ -1,0 +1,415 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage[a4paper]{geometry}
+
+% General packages for math in general, theorems and symbols 
+% Read ftp://ftp.ams.org/ams/doc/amsmath/short-math-guide.pdf for further information
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{amssymb}
+% A way to define theorems and lemmata
+
+% Optional calligraphic fonts    
+% \usepackage[mathscr]{eucal}
+
+% Packages for building tables and tabulars 
+\usepackage{array}
+\usepackage{tabu}   % Wide lines in tables
+\usepackage{xspace} % Non-eatable spaces in macros
+
+% Including graphical images and setting the figure directory
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% Packages for getting clickable links in PDF file
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+% 
+
+% Packages for defining colourful text together with some colours
+\usepackage{color}
+\usepackage{xcolor} 
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+% Standard package for drawing algorithms
+% Since the thesis in article format we must define \chapter for
+% the package algorithm2e (otherwise obscure errors occur) 
+\let\chapter\section
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+
+% Fix a  set of keywords which you use inside algorithms
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKwData{typeInt}{Int}
+\SetKwData{typeRat}{Rat}
+\SetKwData{Defined}{Defined}
+\SetKwFunction{parseStatement}{parseStatement}
+
+
+% Nice todo notes
+\usepackage{todonotes}
+
+% Define your favorite macros that you use inside the thesis 
+% Name followed by non-removable space
+\newcommand{\proveit}{ProveIt\xspace}
+
+% Macros that make sure that the math mode is set
+\newcommand{\typeF}[1] {\ensuremath{\mathsf{type_{#1}}}\xspace}
+\newcommand{\opDiv}{\ensuremath{\backslash \mathsf{div}}\xspace} 
+
+% Nice Todo box
+\newcommand{\TODO}{\todo[inline]}
+
+% A way to define theorems and lemmata
+\newtheorem{theorem}{Theorem}
+
+\DeclareMathOperator{\Prob}{P}
+\DeclareMathOperator{\Mean}{E}
+\end_preamble
+\use_default_options true
+\master 0_thesis.lyx
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+The test area was divided into pixels with the length of 630 meters.
+ The size was selected so it would be large enough that many pixels would
+ contain multiple experimental GPS data location points.
+ Raster 
+\begin_inset Formula $\Prob'(C|x)$
+\end_inset
+
+ were calculated for all the cell plan variants.
+ Cell plan variants were:
+\end_layout
+
+\begin_layout Itemize
+rssi_default - cell plan based on RSSI data, extra modifications were not
+ made.
+\end_layout
+
+\begin_layout Itemize
+rssi_A1AP2 - rssi_default cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+stretch cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+ Cell's width is stretched twice.
+\end_layout
+
+\begin_layout Itemize
+rssi_A2AP1 - rssi_default cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+stretch cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+ The cell is stretched twice along the direction of the cell.
+\end_layout
+
+\begin_layout Itemize
+rssi_A3AP1 - rssi_default cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+stretch cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+ The cell is stretched along the direction of the cell three times.
+\end_layout
+
+\begin_layout Itemize
+rssi_convexhull - rssi_default cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+Convex Hull cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+ 
+\end_layout
+
+\begin_layout Itemize
+rssi_ellipse - rssi_default cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+ellipse cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+\end_layout
+
+\begin_layout Itemize
+voronoi_default - cell plan created with Voronoi method, extra modifications
+ were not made.
+\end_layout
+
+\begin_layout Itemize
+voronoi_A1AP2 - Voronoi cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+stretch cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+ Cell's width is stretched twice.
+\end_layout
+
+\begin_layout Itemize
+voronoi_A2AP1 - Voronoi cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+stretch cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+ The cell is stretched twice along the direction of the cell.
+\end_layout
+
+\begin_layout Itemize
+voronoi_A3AP1 - Voronoi cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+stretch cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+ The cell is stretched along the direction of the cell three times.
+\end_layout
+
+\begin_layout Itemize
+voronoi_convexhull -- Voronoi cell plan with 
+\begin_inset Quotes eld
+\end_inset
+
+Convex Hull cell
+\begin_inset Quotes erd
+\end_inset
+
+ modification.
+\end_layout
+
+\begin_layout Standard
+Formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:loglikelihood"
+
+\end_inset
+
+ was used for calculating the likelihood of the positioning data with each
+ SPDF raster variant.
+ MLE results are shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cell_plan_variants_log"
+
+\end_inset
+
+.
+ Horizontal axis shows different users and vertical axis shows average 
+\begin_inset Formula $\Prob(C|x)$
+\end_inset
+
+ for CDR data of the given user.
+ Results produced with the same processing parameters are connected with
+ a line for easier comparison of methods.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/average_log_spdf_per_user.png
+	lyxscale 90
+	height 18cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Relative performance of the various cell plan variants: a) contains cell
+ plans with Bayesian overlapping; b) cell plans without Bayesian overlapping.
+ c) shows effect of the Bayesian overlapping.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cell_plan_variants_log"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:overlapping-cell-model"
+
+\end_inset
+
+ shows the SPDF of all the cells along a sequential straight line of pixels.
+ Each pixel has stacked probabilities of the cells.
+ Upper chart is generated with applying Bayesian overlapping cell model,
+ lower chart data is generated without considering overlapping effects.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/overlapping_cell_model_w_and_wo_bayesian.png
+	lyxscale 80
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Cells SPDF for sequential line of pixels with and without using Bayesian
+ overlapping cell model, calculated using Formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:conditional_probability"
+
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:overlapping-cell-model"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
